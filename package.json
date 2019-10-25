@@ -1,0 +1,13 @@
+{
+  "name": "h2-explorer",
+  "version": "1.0.0",
+  "description": "file manager",
+  "main": "main.js",
+  "scripts": {
+    "start": "electron ."
+  },
+  "repository": "https://code.huching.cn/huc/h2-explorer.git",
+  "author": "huc",
+  "license": "MIT",
+  "private": true
+}
