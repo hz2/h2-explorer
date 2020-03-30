@@ -6,18 +6,12 @@
     <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self'">
     <meta http-equiv="X-Content-Security-Policy" content="default-src 'self'; script-src 'self'">
     <title>Hello World!</title>
+    <link rel="stylesheet" href="style.css">
   </head>
   <body>
-    <h1>Hello World!</h1>
-
-    <button id="send">在 渲染进程中执行主进程里的方法（异步）</button>
-
-    <div id="btn">111</div>
-    We are using Node.js <span id="node-version"></span>,
-    Chromium <span id="chrome-version"></span>,
-    v8  <span id="v8-version"></span>,
-    and Electron <span id="electron-version"></span>.
-
+    <input type="text" id="uri" value="D:\design\collection">
+    <span id="getResult"> 获取</span>
+    <div id="result"></div>
     <!-- You can also require other files to run in this process -->
     <script src="./renderer.js"></script>
     <!-- <script src="./modules/ipcRender.js"></script> -->
