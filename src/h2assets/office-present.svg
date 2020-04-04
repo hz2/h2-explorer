@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="52.9mm" height="52.9mm" version="1.1" viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg">
+ <g transform="translate(-.45 -.1)">
+  <g fill="#f4f3e5" fill-opacity=".963">
+   <path d="m170 59.3-53.2-44h-52.4c-16.4 0-29.5 13.2-29.5 29.5v115c0 16.4 13.2 29.5 29.5 29.5h76.1c16.4 0 29.5-13.2 29.5-29.5z" fill="#000" fill-opacity=".118"/>
+  </g>
+  <path d="m166 52-49.8-41.1h-55.8c-16.4 0-29.5 13.2-29.5 29.5v115c0 16.4 13.2 29.5 29.5 29.5h76.1c16.4 0 29.5-13.2 29.5-29.5z" fill="#f95" fill-opacity=".882"/>
+  <path d="m117 15.3v14.5c0 16.4 12.4 29.5 28.7 29.5h24.5z" fill-opacity=".118"/>
+ </g>
+ <g transform="matrix(1 0 0 1 2.96 .387)"></g>
+ <g transform="translate(37.1 62.7)">
+  <path transform="matrix(0,1,1,0,0,0)" d="m53.6 59.5c2.39 6.18.469 13.2-4.73 17.3s-12.5 4.35-17.9.595c-5.46-3.75-7.84-10.6-5.87-17s7.84-10.6 14.5-10.6l46 1e-6" fill="none" stroke="#fff" stroke-linejoin="bevel" stroke-width="15"/>
+ </g>
+</svg>

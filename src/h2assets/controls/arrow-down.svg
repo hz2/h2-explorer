@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg version="1.1" viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg">
+ <g transform="translate(0,-97)">
+  <g transform="rotate(180 95.9 200)" fill="none" stroke="#5a5a5a" stroke-linecap="round" stroke-width="15">
+   <path d="m33.3 178 58.6-48.1 58.6 48.1" stroke-linejoin="round"/>
+   <path d="m91.9 130v147"/>
+  </g>
+ </g>
+</svg>
