@@ -53,9 +53,9 @@ let m = Menu.buildFromTemplate(menus)
 // Menu.setApplicationMenu(m)
 
 // 绑定右键菜单
-window.addEventListener('contextmenu', (e) => {
-  e.preventDefault()
-  m.popup({
-    window: remote.getCurrentWindow()
-  })
-}, false)
+// window.addEventListener('contextmenu', (e) => {
+//   e.preventDefault()
+//   m.popup({
+//     window: remote.getCurrentWindow()
+//   })
+// }, false)

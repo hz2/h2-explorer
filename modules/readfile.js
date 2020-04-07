@@ -1,15 +1,52 @@
 const fs = require('fs');
+const os = require('os');
 
 // read file dir
 
+console.log('os', fs.lstatSync('//'));
+let a = fs.readdirSync('//', {
+  encoding: "utf8",
+  withFileTypes: true
+})
+console.log('isexist  ', a);
 
 let url = document.querySelector('#uri')
 let val = url && url.value
 
 async function show(path) {
+
+  console.log(' path ', path);
+  document.querySelector('#uri').value = path
+
+  const showDisk = () => {
+    new Array(26).fill('').forEach((x, i) => {
+
+
+      let dirve = String.fromCharCode(65 + i)
+      if (!fs.existsSync(dirve + ':')) {
+        return
+      }
+      let dom = document.createElement('div')
+      dom.className = 'item'
+      let thumb = `<div class="iconbg directory-icon"></div>`
+      dom.ondblclick = () => nextPage(dirve + ':\\')
+      dom.innerHTML = `${thumb}
+        <div class="text">${ 'Disk ' + dirve }</div>
+        `
+      document.querySelector('#result').appendChild(dom)
+
+    })
+  }
+
+  document.querySelector('#result').innerHTML = ''
+  if (path == 'home') {
+    showDisk()
+    return
+  }
+
+
   const dir = await fs.promises.opendir(path);
   for await (const dirent of dir) {
-    // console.log(dirent.name, dirent);
     let dom = document.createElement('div')
     dom.className = 'item'
 
@@ -50,21 +87,17 @@ async function show(path) {
 show(val).catch(console.error);
 
 
-document.querySelector('#getResult').onclick = () => {
-  let url = document.querySelector('#uri')
-  let val = url && url.value
-
-  document.querySelector('#result').innerHTML = ''
-  show(val).catch(console.error);
-}
 nextPage = (val) => {
-  let url = document.querySelector('#uri')
-  url.value = val
-  document.querySelector('#result').innerHTML = ''
   show(val).catch(console.error);
 }
 document.querySelector('#gotoParent').onclick = () => {
-
-  let newval = document.querySelector('#uri').value.split('\\').slice(0,-1).join('\\')
+  let newval = document.querySelector('#uri').value.split('\\').slice(0, -1).join('\\') || 'home'
+  if (newval.endsWith(':')) {
+    newval += "\\"
+  }
   nextPage(newval)
+}
+
+document.querySelector('#getResult').onclick = () => {
+  nextPage(document.querySelector('#uri').value  || 'home' )
 }
