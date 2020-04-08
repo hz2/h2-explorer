@@ -1,5 +1,6 @@
 const fs = require('fs');
 const os = require('os');
+const path  = require('path');
 
 // read file dir
 
@@ -13,10 +14,10 @@ console.log('isexist  ', a);
 let url = document.querySelector('#uri')
 let val = url && url.value
 
-async function show(path) {
+async function show(locurl) {
 
-  console.log(' path ', path);
-  document.querySelector('#uri').value = path
+  console.log(' locurl ', locurl);
+  document.querySelector('#uri').value = locurl
 
   const showDisk = () => {
     new Array(26).fill('').forEach((x, i) => {
@@ -39,27 +40,30 @@ async function show(path) {
   }
 
   document.querySelector('#result').innerHTML = ''
-  if (path == 'home') {
+  if (locurl == 'home') {
     showDisk()
     return
   }
 
 
-  const dir = await fs.promises.opendir(path);
+  const dir = await fs.promises.opendir(locurl);
   for await (const dirent of dir) {
     let dom = document.createElement('div')
     dom.className = 'item'
 
     let thumb = ''
+
+    let ext =  path.extname(  dirent.name ) 
+    
     if (dirent.isDirectory()) {
       thumb = `<div class="iconbg directory-icon"></div>`
-      dom.ondblclick = () => nextPage(path + '\\' + dirent.name)
+      dom.ondblclick = () => nextPage(locurl + '\\' + dirent.name)
 
     } else if (/\.(png|svg|ico|jpg|jpeg)$/i.test(dirent.name)) {
-      thumb = `<div class="icon"><img src="${path}\\${dirent.name}"></div>`
+      thumb = `<div class="icon"><img src="${locurl}\\${dirent.name}"></div>`
 
     } else if (/\.(mp4|avi)$/i.test(dirent.name)) {
-      thumb = `<div class="icon"><video src="${path}\\${dirent.name}"></video></div>`
+      thumb = `<div class="icon"><video src="${locurl}\\${dirent.name}"></video></div>`
     } else if (/\.(zip|rar|7z)$/i.test(dirent.name)) {
       thumb = `<div class="iconbg filetype-archive"></div>`
     } else if (/\.(mp3|wav)$/i.test(dirent.name)) {
@@ -91,11 +95,11 @@ nextPage = (val) => {
   show(val).catch(console.error);
 }
 document.querySelector('#gotoParent').onclick = () => {
-  let newval = document.querySelector('#uri').value.split('\\').slice(0, -1).join('\\') || 'home'
+  let newval = document.querySelector('#uri').value.split(path.sep).slice(0, -1).join('\\') || 'home'
   if (newval.endsWith(':')) {
     newval += "\\"
   }
-  nextPage(newval)
+  nextPage( path.dirname( document.querySelector('#uri').value ) )
 }
 
 document.querySelector('#getResult').onclick = () => {
