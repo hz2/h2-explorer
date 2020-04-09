@@ -2,29 +2,37 @@ body {
   background-color: #f5faff;
   margin: 0;
 }
+
 :root {
   --item-size: 10vw;
 }
+
 #result {
   height: calc(100vh - 60px);
   overflow: auto;
+
+  .item {
+    user-select: none;
+  }
+
+  &.layout-list {
+    .item {
+      display: flex;
+      width: 80%;
+      margin: 0 15px;
+      padding: 3px 15px;
+
+      .icon,
+      .iconbg {
+        width: 25px;
+        height: 25px;
+        margin-right: 5px;
+        padding: 0;
+      }
+    }
+  }
 }
-#result .item {
-  user-select: none;
-}
-#result.layout-list .item {
-  display: flex;
-  width: 80%;
-  margin: 0 15px;
-  padding: 3px 15px;
-}
-#result.layout-list .item .icon,
-#result.layout-list .item .iconbg {
-  width: 25px;
-  height: 25px;
-  margin-right: 5px;
-  padding: 0;
-}
+
 #result .item {
   display: inline-block;
   padding: 20px;
@@ -32,9 +40,11 @@ body {
   width: var(--item-size);
   vertical-align: top;
 }
+
 #result .item:hover {
   background: #e7e7e7;
 }
+
 #result .item .icon {
   padding: 8px;
   box-sizing: border-box;
@@ -42,51 +52,70 @@ body {
   height: var(--item-size);
   display: flex;
 }
+
 #result .item .icon img,
 #result .item .icon video {
+
   max-width: 100%;
   max-height: 100%;
+  // min-height: 30%;
+  // min-width: 30%;
   object-fit: contain;
   text-align: center;
   margin: auto;
   align-items: center;
+
 }
+
 #result .item .iconbg {
   width: var(--item-size);
   height: var(--item-size);
   background-size: contain;
+
 }
+
 .directory-icon {
   background-image: url('../h2assets/folder.svg');
 }
+
 .filetype-archive {
   background-image: url('../h2assets/archive.svg');
 }
+
 .filetype-audio {
   background-image: url('../h2assets/audio.svg');
 }
+
 .filetype-document {
   background-image: url('../h2assets/document.svg');
 }
+
 .filetype-video {
   background-image: url('../h2assets/video.svg');
 }
+
 .filetype-pdf {
   background-image: url('../h2assets/filetype-pdf.svg');
 }
+
 .filetype-office-doc {
   background-image: url('../h2assets/office-doc.svg');
 }
+
 .filetype-office-sheet {
   background-image: url('../h2assets/office-sheet.svg');
 }
+
 .filetype-office-present {
   background-image: url('../h2assets/office-present.svg');
 }
+
 .filetype-plain {
   background-image: url('../h2assets/plain.svg');
 }
+
 #result .item .text {
+
   width: 100%;
   white-space: pre-wrap;
   overflow: hidden;
@@ -96,7 +125,7 @@ body {
   -webkit-box-orient: vertical;
   text-overflow: ellipsis;
   /* text-align: justify; */
-  text-align: center;
+    text-align: center;
   word-break: break-all;
   color: #757575;
 }

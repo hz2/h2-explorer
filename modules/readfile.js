@@ -1,28 +1,18 @@
 const fs = require('fs');
 const os = require('os');
-const path  = require('path');
+const path = require('path');
 
 // read file dir
 
-console.log('os', fs.lstatSync('//'));
-let a = fs.readdirSync('//', {
-  encoding: "utf8",
-  withFileTypes: true
-})
-console.log('isexist  ', a);
 
 let url = document.querySelector('#uri')
+const $uri = document.querySelector('#uri')
 let val = url && url.value
 
 async function show(locurl) {
 
-  console.log(' locurl ', locurl);
-  document.querySelector('#uri').value = locurl
-
   const showDisk = () => {
     new Array(26).fill('').forEach((x, i) => {
-
-
       let dirve = String.fromCharCode(65 + i)
       if (!fs.existsSync(dirve + ':')) {
         return
@@ -30,7 +20,7 @@ async function show(locurl) {
       let dom = document.createElement('div')
       dom.className = 'item'
       let thumb = `<div class="iconbg directory-icon"></div>`
-      dom.ondblclick = () => nextPage(dirve + ':\\')
+      dom.ondblclick = () => gotoVal(dirve + ':\\')
       dom.innerHTML = `${thumb}
         <div class="text">${ 'Disk ' + dirve }</div>
         `
@@ -40,24 +30,26 @@ async function show(locurl) {
   }
 
   document.querySelector('#result').innerHTML = ''
-  if (locurl == 'home') {
+  if (locurl === 'H2:\\' || locurl === 'H2:') {
     showDisk()
     return
   }
 
+  // console.log('os', fs.lstatSync('//'));
 
-  const dir = await fs.promises.opendir(locurl);
-  for await (const dirent of dir) {
+
+  const loopItem = list => list.forEach(dirent => {
+
     let dom = document.createElement('div')
     dom.className = 'item'
 
     let thumb = ''
 
-    let ext =  path.extname(  dirent.name ) 
-    
+    let ext = path.extname(dirent.name)
+
     if (dirent.isDirectory()) {
       thumb = `<div class="iconbg directory-icon"></div>`
-      dom.ondblclick = () => nextPage(locurl + '\\' + dirent.name)
+      dom.ondblclick = () => gotoVal(locurl + '\\' + dirent.name)
 
     } else if (/\.(png|svg|ico|jpg|jpeg)$/i.test(dirent.name)) {
       thumb = `<div class="icon"><img src="${locurl}\\${dirent.name}"></div>`
@@ -85,23 +77,58 @@ async function show(locurl) {
       <div class="text">${dirent.name}</div>
       `
     document.querySelector('#result').appendChild(dom)
-  }
+
+
+  })
+
+
+  const dirSync = await fs.readdirSync(locurl, {
+    withFileTypes: true
+  })
+  // sort list and display
+  loopItem(dirSync.sort((a, b) => b.isDirectory() - a.isDirectory()))
+
 }
 
 show(val).catch(console.error);
 
 
 nextPage = (val) => {
-  show(val).catch(console.error);
-}
-document.querySelector('#gotoParent').onclick = () => {
-  let newval = document.querySelector('#uri').value.split(path.sep).slice(0, -1).join('\\') || 'home'
-  if (newval.endsWith(':')) {
-    newval += "\\"
-  }
-  nextPage( path.dirname( document.querySelector('#uri').value ) )
+  show(val).catch(
+    // console.error
+    e => alert(e)
+  );
 }
 
-document.querySelector('#getResult').onclick = () => {
-  nextPage(document.querySelector('#uri').value  || 'home' )
+const gotoResult = () => {
+  nextPage($uri.value || 'H2:\\')
+}
+
+// fill address bar and goto result
+const gotoVal = val => {
+  $uri.value = path.normalize(val)
+  gotoResult()
+}
+
+// const gotoVal = ()=> {
+//   let newval = document.querySelector('#uri').value.split(path.sep).slice(0, -1).join('\\') || 'H2:\\'
+//   if (newval.endsWith(':')) {
+//     newval += "\\"
+//   }
+//   nextPage(path.dirname(document.querySelector('#uri').value))
+// }
+
+
+document.querySelector('#getResult').onclick = gotoResult
+document.querySelector('#gotoParent').onclick = () => {
+  let parent;
+  if ($uri.value === 'H2:\\' || $uri.value === 'H2:') {
+    return
+  }
+  if ($uri.value === path.dirname($uri.value)) {
+    parent = 'H2:\\'
+  } else {
+    parent = path.dirname($uri.value)
+  }
+  gotoVal(parent)
 }

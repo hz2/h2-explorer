@@ -1,0 +1,41 @@
+.navbar {
+  display: flex;
+  height: 50px;
+  align-items: center;
+  justify-content: space-between;
+  margin: 0 15px;
+  input {
+    padding: 8px 10px;
+    width: 100%;
+    border: 1px solid #ddd;
+    &:focus {
+      outline: 0;
+      border: 1px solid #13b1a2;
+    }
+  }
+
+  .icon {
+
+    width: 28px;
+    height: 28px;
+    margin: 0 5px;
+    background-size: contain;
+    background-position: center;
+    background-repeat: no-repeat;
+
+    &.arrive-right {
+      background-image: url('../h2assets/controls/arrive-right.svg');
+    }
+
+    &.arrow-top {
+      background-image: url('../h2assets/controls/arrow-top.svg');
+    }
+
+    &.layout.layout-icon {
+      background-image: url('../h2assets/controls/layout-icon.svg');
+    }
+    &.layout.layout-list {
+      background-image: url('../h2assets/controls/layout-list.svg');
+    }
+  }
+}

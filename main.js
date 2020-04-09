@@ -17,30 +17,32 @@ function createWindow () {
   // Other code removed for brevity
   // ctrl shift i
 
-  var menu = Menu.buildFromTemplate([
-      // {
-      //     label: 'Menu',
-      //     submenu: [
-      //         {label:'Adjust Notification Value'},
-      //         {label:'CoinMarketCap'},
-      //         {label:'Exit'}
-      //     ]
-      // }
-  ])
-  Menu.setApplicationMenu(menu); 
+  // var menu = Menu.buildFromTemplate([
+  //     // {
+  //     //     label: 'Menu',
+  //     //     submenu: [
+  //     //         {label:'Adjust Notification Value'},
+  //     //         {label:'CoinMarketCap'},
+  //     //         {label:'Exit'}
+  //     //     ]
+  //     // }
+  // ])
+  // Menu.setApplicationMenu(menu); 
   
   // Create the browser window.
   mainWindow = new BrowserWindow({
     width: 800,
     height: 600,
+    icon: __dirname + '/src/h2assets/logo-v1.ico',
+    backgroundColor: '#f5faff',
     webPreferences: {
       preload: path.join(__dirname, 'preload.js')
     }
   })
-
   // and load the index.html of the app.
   mainWindow.loadFile('index.html')
-
+  // mainWindow.setMenu(null)
+  mainWindow.removeMenu()
   // Open the DevTools.
   mainWindow.webContents.openDevTools()
 
