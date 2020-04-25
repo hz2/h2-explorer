@@ -118,9 +118,7 @@ const gotoVal = val => {
 //   nextPage(path.dirname(document.querySelector('#uri').value))
 // }
 
-
-document.querySelector('#getResult').onclick = gotoResult
-document.querySelector('#gotoParent').onclick = () => {
+const gotoParent = () => {
   let parent;
   if ($uri.value === 'H2:\\' || $uri.value === 'H2:') {
     return
@@ -132,3 +130,15 @@ document.querySelector('#gotoParent').onclick = () => {
   }
   gotoVal(parent)
 }
+
+
+
+$uri.addEventListener('keyup', ({
+  keyCode
+}) => (keyCode == 13) && gotoResult())
+document.querySelector('body').addEventListener('keyup', ({
+  keyCode
+}) => (keyCode == 8) && gotoParent())
+
+document.querySelector('#getResult').onclick = gotoResult
+document.querySelector('#gotoParent').onclick = gotoParent
