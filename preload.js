@@ -18,28 +18,25 @@ window.addEventListener('DOMContentLoaded', () => {
 
 
   require('./modules/readfile.js')
-  // const btn = document.querySelector('#btn');
-  // const path = require('path');
-  // const BrowerWindow = require('electron').remote.BrowserWindow;
 
-  // setTimeout(() => {
+  const BrowerWindow = require('electron').remote.BrowserWindow;
+  window.newWindow = path => {
+    win = new BrowerWindow({
+      width: 960,
+      height: 640,
+      frame: true, // false隐藏关闭按钮、菜单选项 true显示
+      fullscreen: false, // 全屏展示
+    })
+
+    // win.webContents.openDevTools()
+    win.removeMenu()
+    win.loadURL(path );
+    win.on('close', () => {
+      win = null
+    });
+  }
 
 
-  // // btn.onclick = () => {
-  // //   win = new BrowerWindow({ 
-  // //       width: 300,
-  // //       height: 200, 
-  // //       frame: false, // false隐藏关闭按钮、菜单选项 true显示
-  // //       fullscreen:false, // 全屏展示
-  // //       transparent: false 
-  // //   }) 
-
-  // //   win.loadURL(path.join('file:',__dirname,'news.html'));
-
-  // //   win.on('close',()=>{win = null});
-  // // }
-
-  // }, 1000 );
 
 
   // 创建菜单  

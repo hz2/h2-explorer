@@ -1,9 +1,8 @@
 const fs = require('fs');
 const os = require('os');
 const path = require('path');
-
+const {app, BrowserWindow , Menu } = require('electron')
 // read file dir
-
 
 let url = document.querySelector('#uri')
 const $uri = document.querySelector('#uri')
@@ -51,9 +50,9 @@ async function show(locurl) {
       thumb = `<div class="iconbg directory-icon"></div>`
       dom.ondblclick = () => gotoVal(locurl + '\\' + dirent.name)
 
-    } else if (/\.(png|svg|ico|jpg|jpeg)$/i.test(dirent.name)) {
+    } else if (/\.(png|svg|ico|jpg|jpeg|webp|bmp)$/i.test(dirent.name)) {
       thumb = `<div class="icon"><img src="${locurl}\\${dirent.name}"></div>`
-
+      dom.ondblclick = () =>newWindow( `${locurl}\\${dirent.name}`)
     } else if (/\.(mp4|avi)$/i.test(dirent.name)) {
       thumb = `<div class="icon"><video src="${locurl}\\${dirent.name}"></video></div>`
     } else if (/\.(zip|rar|7z)$/i.test(dirent.name)) {
@@ -64,12 +63,16 @@ async function show(locurl) {
       thumb = `<div class="iconbg filetype-document"></div>`
     } else if (/\.(pdf)$/i.test(dirent.name)) {
       thumb = `<div class="iconbg filetype-pdf"></div>`
+      dom.ondblclick = () =>newWindow( `${locurl}\\${dirent.name}`)
     } else if (/\.(doc|docx)$/i.test(dirent.name)) {
       thumb = `<div class="iconbg filetype-office-doc"></div>`
     } else if (/\.(xls|xlsx)$/i.test(dirent.name)) {
       thumb = `<div class="iconbg filetype-office-sheet"></div>`
     } else if (/\.(ppt|pptx)$/i.test(dirent.name)) {
       thumb = `<div class="iconbg filetype-office-present"></div>`
+    } else if (/\.(txt|ini|json)$/i.test(dirent.name)) {
+      thumb = `<div class="iconbg filetype-plain"></div>`
+      dom.ondblclick = () =>newWindow( `${locurl}\\${dirent.name}`)
     } else {
       thumb = `<div class="iconbg filetype-plain"></div>`
     }
@@ -136,6 +139,11 @@ const gotoParent = () => {
 $uri.addEventListener('keyup', ({
   keyCode
 }) => (keyCode == 13) && gotoResult())
+
+document.querySelector('body').addEventListener('mouseup', ({
+  button
+}) => (button == 3) && gotoParent())
+
 document.querySelector('body').addEventListener('keyup', ({
   keyCode
 }) => (keyCode == 8) && gotoParent())
