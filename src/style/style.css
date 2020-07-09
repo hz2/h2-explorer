@@ -55,6 +55,10 @@ body {
   align-items: center;
   box-shadow: 2px 2px 5px 2px #2225;
 }
+#result .item .icon img.noshadow,
+#result .item .icon video.noshadow {
+  box-shadow: 0 0;
+}
 #result .item .iconbg {
   width: var(--item-size);
   height: var(--item-size);

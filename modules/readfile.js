@@ -52,6 +52,9 @@ async function show(locurl) {
 
     } else if (/\.(png|svg|ico|jpg|jpeg|webp|bmp)$/i.test(dirent.name)) {
       thumb = `<div class="icon"><img src="${locurl}\\${dirent.name}"></div>`
+      if ( /\.(svg|ico)$/i.test(dirent.name) ) {
+        thumb = `<div class="icon"><img class="noshadow" src="${locurl}\\${dirent.name}"></div>`
+      }
       dom.ondblclick = () =>newWindow( `${locurl}\\${dirent.name}`)
     } else if (/\.(mp4|avi)$/i.test(dirent.name)) {
       thumb = `<div class="icon"><video src="${locurl}\\${dirent.name}"></video></div>`
