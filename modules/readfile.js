@@ -50,7 +50,7 @@ async function show(locurl) {
       thumb = `<div class="iconbg directory-icon"></div>`
       dom.ondblclick = () => gotoVal(locurl + '\\' + dirent.name)
 
-    } else if (/\.(png|svg|ico|jpg|jpeg|webp|bmp)$/i.test(dirent.name)) {
+    } else if (/\.(png|svg|ico|jpg|jpeg|webp|bmp|avif)$/i.test(dirent.name)) {
       thumb = `<div class="icon"><img src="${locurl}\\${dirent.name}"></div>`
       if ( /\.(svg|ico)$/i.test(dirent.name) ) {
         thumb = `<div class="icon"><img class="noshadow" src="${locurl}\\${dirent.name}"></div>`
