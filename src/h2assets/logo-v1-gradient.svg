@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg version="1.1" viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+ <defs>
+  <radialGradient id="radialGradient859" cx="186.27" cy="311.39" r="90.2" gradientTransform="matrix(.43252 -2.1647 3.2436 .6481 -900.48 469.81)" gradientUnits="userSpaceOnUse">
+   <stop stop-color="#f3b240" offset="0"/>
+   <stop stop-color="#f3d640" offset="1"/>
+  </radialGradient>
+  <linearGradient id="linearGradient871" x1="80.794" x2="92.621" y1="112.02" y2="231.62" gradientUnits="userSpaceOnUse">
+   <stop stop-color="#c49e2d" offset="0"/>
+   <stop stop-color="#a98724" offset=".5"/>
+   <stop stop-color="#634e13" offset="1"/>
+  </linearGradient>
+ </defs>
+ <g transform="translate(0 -97)">
+  <path d="m93.6 138c4.12 4.01 12.1 7.24 17.8 7.24h56.3c12.3 0 22.2 9.92 22.2 22.2v69.1c0 12.3-9.92 22.2-22.2 22.2h-136c-12.3 0-22.2-9.92-22.2-22.2v-88.8c0-12.3 9.92-19.868 22.2-19.868h38.2c5.75 0 13.7 0.89796 17.8 4.908z" fill="url(#linearGradient871)"/>
+  <path d="m190 246c0 12.3-9.92 22.2-22.2 22.2h-136c-12.3 0-22.2-9.92-22.2-22.2v-45.03c0-12.3 9.92-24.532 22.2-24.532h38.2c5.75 0 13.7-0.89796 17.8-4.908l5.43-5.28c4.12-4.01 12.1-7.24 17.8-7.24h56.3c12.3 0 22.2 9.92 22.2 22.2z" fill="url(#radialGradient859)"/>
+ </g>
+ <path d="m169 127v-10.8h-15.8" fill="none" stroke="#fff" stroke-linecap="round" stroke-linejoin="bevel" stroke-width="10"/>
+ <g transform="translate(3.72 2.83)" fill="none" stroke="#fff" stroke-linecap="round" stroke-linejoin="bevel" stroke-width="10">
+  <g transform="translate(0 -.262)">
+   <path d="m109 88.6v50.2"/>
+   <path d="m109 113h23v25.4"/>
+  </g>
+  <path transform="translate(37.4 1.09)" d="m113 127v10.8h15.8"/>
+ </g>
+</svg>
