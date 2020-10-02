@@ -33,7 +33,7 @@ function createWindow () {
   mainWindow = new BrowserWindow({
     width: 800,
     height: 600,
-    icon: __dirname + '/src/h2assets/logo-v1.ico',
+    icon: __dirname + '/src/h2assets/logos/logo-v1.ico',
     backgroundColor: '#f5faff',
     webPreferences: {
       preload: path.join(__dirname, 'preload.js')
