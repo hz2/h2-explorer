@@ -17,8 +17,8 @@
     <path d="m190 246c0 12.3-9.92 22.2-22.2 22.2h-136c-12.3 0-22.3-9.92-22.3-22.2v-45.03c0-12.3 10.02-24.532 22.3-24.532h38.2c5.75 0 13.7-0.89796 17.8-4.908l5.43-5.28c4.12-4.01 12.1-7.24 17.8-7.24h56.3c12.3 0 22.67 9.92 22.67 22.2z" fill="url(#a)"/>
   </g>
   <g>
-    <path d="m168.37 115.4-11.777-20.399h-23.555" fill="none" stroke="#f8f8f8" stroke-linecap="round" stroke-linejoin="round" stroke-width="14"/>
-    <path d="m117.76 121.47 11.777 20.399h23.555" fill="none" stroke="#f8f8f8" stroke-linecap="round" stroke-linejoin="round" stroke-width="14"/>
+    <path d="m168.37 115.4-11.777-20.399h-23.555" fill="none" stroke="#f8f8f8" stroke-linecap="round" stroke-linejoin="round" stroke-width="13"/>
+    <path d="m117.76 121.47 11.777 20.399h23.555" fill="none" stroke="#f8f8f8" stroke-linecap="round" stroke-linejoin="round" stroke-width="13"/>
     <circle cx="143.06" cy="118.43" r="9" fill="#f8f8f8">
       <animate attributeName="r" values="9;8.5;9.5;9" dur="3s" repeatCount="indefinite" />
       <animate attributeName="fill" values="#f8f8f8;#f0f0f0;#fff;#f8f8f8" dur="3s" repeatCount="indefinite" />
