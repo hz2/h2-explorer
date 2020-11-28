@@ -1,31 +1,46 @@
 const fs = require('fs');
 const os = require('os');
 const path = require('path');
-const {app, BrowserWindow , Menu } = require('electron')
+const {
+  app,
+  BrowserWindow,
+  Menu
+} = require('electron')
 // read file dir
 
 let url = document.querySelector('#uri')
 const $uri = document.querySelector('#uri')
 let val = url && url.value
 
+const platform = process.platform
 async function show(locurl) {
 
   const showDisk = () => {
-    new Array(26).fill('').forEach((x, i) => {
-      let dirve = String.fromCharCode(65 + i)
-      if (!fs.existsSync(dirve + ':')) {
-        return
-      }
+    const creatDom = (drive, val) => {
+
       let dom = document.createElement('div')
       dom.className = 'item'
       let thumb = `<div class="iconbg directory-icon"></div>`
-      dom.ondblclick = () => gotoVal(dirve + ':\\')
+      dom.ondblclick = () => gotoVal(val)
       dom.innerHTML = `${thumb}
-        <div class="text">${ 'Disk ' + dirve }</div>
+        <div class="text">${ drive }</div>
         `
       document.querySelector('#result').appendChild(dom)
+    }
+    if (platform === 'linux') {
+      arr = ['/', '/home'].forEach((x, i) => {
+        creatDom(x, x)
+      })
+    } else {
+      new Array(26).fill('').forEach((x, i) => {
+        let drive = String.fromCharCode(65 + i)
+        if (!fs.existsSync(drive + ':')) {
+          return
+        }
+        creatDom(drive, drive + ':\\')
+      })
 
-    })
+    }
   }
 
   document.querySelector('#result').innerHTML = ''
@@ -34,7 +49,7 @@ async function show(locurl) {
     return
   }
 
-  // console.log('os', fs.lstatSync('//'));
+  console.log('os', fs.lstatSync('//'));
 
 
   const loopItem = list => list.forEach(dirent => {
@@ -48,25 +63,30 @@ async function show(locurl) {
 
     if (dirent.isDirectory()) {
       thumb = `<div class="iconbg directory-icon"></div>`
-      dom.ondblclick = () => gotoVal(locurl + '\\' + dirent.name)
+      let val = ''
+      if (platform === 'linux') {
+        dom.ondblclick = () => gotoVal(locurl + '/' + dirent.name)
+      } else {
+        dom.ondblclick = () => gotoVal(locurl + '\\' + dirent.name)
+      }
 
     } else if (/\.(png|svg|ico|jpg|jpeg|webp|bmp|avif)$/i.test(dirent.name)) {
       thumb = `<div class="icon"><img src="${locurl}\\${dirent.name}"></div>`
-      if ( /\.(svg|ico)$/i.test(dirent.name) ) {
+      if (/\.(svg|ico)$/i.test(dirent.name)) {
         thumb = `<div class="icon"><img class="noshadow" src="${locurl}\\${dirent.name}"></div>`
       }
-      dom.ondblclick = () =>newWindow( `${locurl}\\${dirent.name}`)
+      dom.ondblclick = () => newWindow(`${locurl}\\${dirent.name}`)
     } else if (/\.(mp4|avi)$/i.test(dirent.name)) {
       thumb = `<div class="icon"><video src="${locurl}\\${dirent.name}"></video></div>`
     } else if (/\.(zip|rar|7z)$/i.test(dirent.name)) {
       thumb = `<div class="iconbg filetype-archive"></div>`
-    } else if (/\.(mp3|wav)$/i.test(dirent.name)) {
+    } else if (/\.(mp3|wav|flac|ogg)$/i.test(dirent.name)) {
       thumb = `<div class="iconbg filetype-audio"></div>`
     } else if (/\.(md|js|json|html)$/i.test(dirent.name)) {
       thumb = `<div class="iconbg filetype-document"></div>`
     } else if (/\.(pdf)$/i.test(dirent.name)) {
       thumb = `<div class="iconbg filetype-pdf"></div>`
-      dom.ondblclick = () =>newWindow( `${locurl}\\${dirent.name}`)
+      dom.ondblclick = () => newWindow(`${locurl}\\${dirent.name}`)
     } else if (/\.(doc|docx)$/i.test(dirent.name)) {
       thumb = `<div class="iconbg filetype-office-doc"></div>`
     } else if (/\.(xls|xlsx)$/i.test(dirent.name)) {
@@ -75,7 +95,7 @@ async function show(locurl) {
       thumb = `<div class="iconbg filetype-office-present"></div>`
     } else if (/\.(txt|ini|json)$/i.test(dirent.name)) {
       thumb = `<div class="iconbg filetype-plain"></div>`
-      dom.ondblclick = () =>newWindow( `${locurl}\\${dirent.name}`)
+      dom.ondblclick = () => newWindow(`${locurl}\\${dirent.name}`)
     } else {
       thumb = `<div class="iconbg filetype-plain"></div>`
     }
