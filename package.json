@@ -19,8 +19,8 @@
   "author": "GitHub",
   "license": "CC0-1.0",
   "devDependencies": {
-    "electron": "^12.0.4",
-    "electron-builder": "^22.10.5"
+    "electron": "^15.1.0",
+    "electron-builder": "^22.11.7"
   },
   "dependencies": {
     "localforage": "^1.7.3"
