@@ -1,5 +1,5 @@
 # H2 Explorer
-<p><img alt="logo" src="./src/h2assets/logo-v1.svg" width="120px"></p>
+<img alt="logo" src="./src/h2assets/logos/logo-v2.2-ani.svg" width="120px" />
 
 
 ## **work in progress**

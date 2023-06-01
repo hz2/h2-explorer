@@ -65,34 +65,34 @@ body {
   background-size: contain;
 }
 .directory-icon {
-  background-image: url('../h2assets/folder.svg');
+  background-image: url('../h2assets/filetype/folder.svg');
 }
 .filetype-archive {
-  background-image: url('../h2assets/archive.svg');
+  background-image: url('../h2assets/filetype/archive.svg');
 }
 .filetype-audio {
-  background-image: url('../h2assets/audio.svg');
+  background-image: url('../h2assets/filetype/audio.svg');
 }
 .filetype-document {
-  background-image: url('../h2assets/document.svg');
+  background-image: url('../h2assets/filetype/document.svg');
 }
 .filetype-video {
-  background-image: url('../h2assets/video.svg');
+  background-image: url('../h2assets/filetype/video.svg');
 }
 .filetype-pdf {
-  background-image: url('../h2assets/filetype-pdf.svg');
+  background-image: url('../h2assets/filetype/filetype-pdf.svg');
 }
 .filetype-office-doc {
-  background-image: url('../h2assets/office-doc.svg');
+  background-image: url('../h2assets/filetype/office-doc.svg');
 }
 .filetype-office-sheet {
-  background-image: url('../h2assets/office-sheet.svg');
+  background-image: url('../h2assets/filetype/office-sheet.svg');
 }
 .filetype-office-present {
-  background-image: url('../h2assets/office-present.svg');
+  background-image: url('../h2assets/filetype/office-present.svg');
 }
 .filetype-plain {
-  background-image: url('../h2assets/plain.svg');
+  background-image: url('../h2assets/filetype/plain.svg');
 }
 #result .item .text {
   width: 100%;
